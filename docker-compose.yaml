@@ -2,19 +2,19 @@ version: "3.7"
 services:
   front:
     build:
-      context: ./front
-      dockerfile: backend/Dockerfile
+      context: ./frontend
+      dockerfile: ./Dockerfile
     ports:
       - "3000:3000"
     stdin_open: true
     volumes:
-      - "./front:/app"
+      - "./frontend:/app"
       - "/node_modules"
 
   back:
     build:
-      context: ./back
-      dockerfile: backend/Dockerfile
+      context: ./backend
+      dockerfile: ./Dockerfile
     ports:
       - "3001:3001"
     depends_on:
