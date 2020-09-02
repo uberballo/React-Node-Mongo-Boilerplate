@@ -1,9 +1,15 @@
+const path = require('path')
+
+
+const pwd = path.resolve(__dirname, '../.env')
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
+    require('dotenv').config(pwd);
 }
 
-let PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
+const MONGO_URL = process.env.MONGO_URL
 
 module.exports = {
-    PORT
+    PORT,
+    MONGO_URL,
 };
