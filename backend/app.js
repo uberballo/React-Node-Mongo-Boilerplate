@@ -5,6 +5,25 @@ const bodyParser = require('body-parser')
 const errorHandler = require('./src/utils/errorHandler')
 const morgan = require('morgan')
 
+
+const mongoose = require('mongoose')
+const config = require('./src/utils/config')
+const url = config.MONGO_URL
+
+console.log('connecting to', url)
+mongoose.connect(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+
+  .then(result => {
+    console.log('connected to MongoDB')
+  })
+  .catch((error) => {
+    console.log('error connecting to MongoDB:', error.message)
+  })
+
+
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
