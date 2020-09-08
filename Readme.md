@@ -13,8 +13,8 @@ This is a simple boilerplate for a React frontend and Node backend project. Cont
 
 ## How to run  
 With these simple steps you can start developing your new project:  
-* (for now) Git clone the project
+* Copy project with `npx degit https://github.com/uberballo/React-Node-Mongo-Boilerplate.git`
 * Start with `docker-compose up`
 * Start doing stuff
 
-
+If you want to use this in any production, that requires some changes.
