@@ -20,7 +20,19 @@ const addPerson = (req, res) => {
   })
 }
 
+const removePerson = (req, res) => {
+  const id = req.params.id
+  if (id === undefined) {
+    return res.status(400).json({error: 'id missing'})
+  }
+
+  Person.findByIdAndRemove(id).then(() => {
+    res.status(204).end()
+  })
+}
+
 module.exports = {
   getPersons,
   addPerson,
+  removePerson,
 }
