@@ -1,5 +1,5 @@
-import React from 'react';
-import PersonContainer from './components/personContainer';
+import React from 'react'
+import PersonContainer from './components/personContainer'
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <p>hello</p>
       <PersonContainer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

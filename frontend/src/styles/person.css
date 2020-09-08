@@ -1,0 +1,17 @@
+ul {
+}
+
+li {
+}
+
+.personName {
+}
+
+.person {
+    display: flex;
+    align-items: center;
+}
+
+.personButton {
+    margin-left: 10px;
+}

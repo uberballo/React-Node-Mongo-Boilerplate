@@ -9,13 +9,21 @@ const PersonContainer = () => {
     async function fetchData() {
       const result = await personService.getPersons()
       setPersons(result)
+      console.log(result)
     }
 
     fetchData()
   }, [])
 
+  const removePerson = id => {
+    const result = persons.filter(person => !(person.id === id))
+    setPersons(result)
+  }
+
   const personRows = () => {
-    return persons?.map(person => <Person person={person} key={person.id} />)
+    return persons?.map(person => (
+      <Person person={person} key={person.id} removePerson={removePerson} />
+    ))
   }
 
   return (
