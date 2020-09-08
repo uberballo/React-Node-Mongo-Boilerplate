@@ -1,11 +1,11 @@
 import React from 'react';
-import PersonContainer from "./components/personContainer";
+import PersonContainer from './components/personContainer';
 
 function App() {
   return (
     <div className="App">
       <p>hello</p>
-        <PersonContainer/>
+      <PersonContainer />
     </div>
   );
 }

@@ -1,35 +1,28 @@
 import React, {useState, useEffect} from 'react'
-import personService from "../services/personService";
-import Person from "./person";
+import personService from '../services/personService'
+import Person from './person'
 
-const PersonContainer = () =>{
-    const [persons, setPersons] = useState([])
+const PersonContainer = () => {
+  const [persons, setPersons] = useState([])
 
+  useEffect(() => {
+    async function fetchData() {
+      const result = await personService.getPersons()
+      setPersons(result)
+    }
 
-    useEffect(() => {
-        async function fetchData() {
-            const result = await personService.getPersons()
-            setPersons(result)}
-            fetchData()
-    },[])
+    fetchData()
+  }, [])
 
-    const personRows = () =>{
-        console.log(persons)
+  const personRows = () => {
+    return persons?.map(person => <Person person={person} key={person.id} />)
+  }
 
-       return persons?.map(person =>
-        <Person person={person} key={person.id}/>
-
-        )
-}
-
-
-    return(
-        <div>
-        <ul>
-            {personRows()}
-        </ul>
-        </div>
-    )
+  return (
+    <div>
+      <ul>{personRows()}</ul>
+    </div>
+  )
 }
 
 export default PersonContainer
