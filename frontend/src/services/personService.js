@@ -28,16 +28,8 @@ const createPerson = async name => {
 }
 
 const removePerson = async id => {
-  try {
-    const res = await axios.post(baseUrl, {
-      id: id,
-    })
-    return res
-  } catch (e) {
-    return {
-      error: e,
-    }
-  }
+  const res = await tryCatchWrapper(() => axios.delete(`${baseUrl}/${id}`))
+  return res
 }
 
-export default {getPersons, createPerson}
+export default {getPersons, createPerson, removePerson}
