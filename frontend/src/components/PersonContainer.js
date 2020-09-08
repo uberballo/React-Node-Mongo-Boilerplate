@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import personService from '../services/personService'
-import Person from './person'
+import Person from './Person'
+import NewPersonContainer from './NewPersonContainer'
 
 const PersonContainer = () => {
   const [persons, setPersons] = useState([])
@@ -21,6 +22,7 @@ const PersonContainer = () => {
   }
 
   const personRows = () => {
+    console.log('persons: ', persons)
     return persons?.map(person => (
       <Person person={person} key={person.id} removePerson={removePerson} />
     ))
@@ -28,6 +30,7 @@ const PersonContainer = () => {
 
   return (
     <div>
+      <NewPersonContainer persons={persons} setPersons={setPersons} />
       <ul>{personRows()}</ul>
     </div>
   )

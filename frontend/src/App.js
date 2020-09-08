@@ -1,5 +1,5 @@
 import React from 'react'
-import PersonContainer from './components/personContainer'
+import PersonContainer from './components/PersonContainer'
 
 function App() {
   return (
