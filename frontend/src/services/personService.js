@@ -15,7 +15,8 @@ const tryCatchWrapper = async func => {
 
 const getPersons = async () => {
   const res = await tryCatchWrapper(() => axios.get(baseUrl))
-  return res.data
+  console.log(res)
+  return res
 }
 
 const createPerson = async name => {
@@ -32,4 +33,4 @@ const removePerson = async id => {
   return res
 }
 
-export default {getPersons, createPerson, removePerson}
+export default { getPersons, createPerson, removePerson }

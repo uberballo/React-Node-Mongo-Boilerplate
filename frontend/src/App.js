@@ -1,7 +1,7 @@
 import React from 'react'
 import PersonContainer from './components/PersonContainer'
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <p>hello</p>

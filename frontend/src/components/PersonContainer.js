@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import personService from '../services/personService'
 import Person from './Person'
 import NewPersonContainer from './NewPersonContainer'
@@ -9,7 +9,9 @@ const PersonContainer = () => {
   useEffect(() => {
     async function fetchData() {
       const result = await personService.getPersons()
-      setPersons(result)
+      if (!result.error) {
+        setPersons(result.data)
+      }
     }
 
     fetchData()
