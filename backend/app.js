@@ -2,46 +2,31 @@ const express = require('express')
 const routes = require('./src/routes')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const errorHandler = require('./src/utils/errorHandler')
+const errorHandler = require('./src/middleware/errorHandler')
 const morgan = require('morgan')
-
+const morganLogging = require('./src/middleware/morganLogging')
 
 const mongoose = require('mongoose')
 const config = require('./src/utils/config')
-const url = config.MONGO_URL
+const uri = config.MONGO_URI
 
-console.log('connecting to', url)
-mongoose.connect(url, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-
+console.log('connecting to', uri)
+mongoose
+  .connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(result => {
     console.log('connected to MongoDB')
   })
-  .catch((error) => {
+  .catch(error => {
     console.log('error connecting to MongoDB:', error.message)
   })
-
 
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
-app.use(
-  morgan(function (tokens, req, res) {
-    console.log(req.body)
-    return [
-      tokens.method(req, res),
-      tokens.url(req, res),
-      tokens.status(req, res),
-      tokens.res(req, res, 'content-length'),
-      '-',
-      tokens['response-time'](req, res),
-      'ms',
-      JSON.stringify(req.body),
-    ].join(' ')
-  })
-)
+app.use(morgan(morganLogging))
 
 app.use(errorHandler)
 
