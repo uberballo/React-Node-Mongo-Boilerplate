@@ -15,6 +15,14 @@ This is a simple boilerplate for a React frontend and Node backend project. Cont
 With these simple steps you can start developing your new project:  
 * Copy project with `npx degit https://github.com/uberballo/React-Node-Mongo-Boilerplate.git`
 * Start with `docker-compose up`
-* Start doing stuff
+* Start doing stuff  
 
+## How to run tests  
+* docker-compose -f docker-compose.test.yaml up --exit-code-from back-test  
+
+Here we point to the `docker-compose.test.yaml` file and close all services after the `back-test` has finished.
+## TODO   
 If you want to use this in any production, that requires some changes.
+* Add some E2E tests
+* Make it easier to remove all of the example codes
+
