@@ -1,7 +1,6 @@
 const path = require('path')
 
 const pwd = path.resolve(__dirname, '/.env')
-console.log(pwd)
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config(pwd)
 }

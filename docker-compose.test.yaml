@@ -1,0 +1,35 @@
+version: "3.7"
+services:
+  back-test:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    ports:
+      - "3001:3001"
+    networks:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/person_db
+    depends_on:
+      - mongodb
+    volumes:
+      - "./backend:/app"
+      - "/app/node_modules"
+    entrypoint: ["yarn","test"]
+
+  mongodb:
+    image: mongo:latest
+    networks:
+      - mongo
+    command: mongod --noauth
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
+
+networks:
+  mongo:
+    name: mongo
