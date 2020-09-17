@@ -1,6 +1,7 @@
 version: "3.7"
 services:
   back-test:
+    image: template-back:latest
     build:
       context: ./backend
       dockerfile: ./Dockerfile
@@ -15,7 +16,7 @@ services:
     volumes:
       - "./backend:/app"
       - "/app/node_modules"
-    entrypoint: ["yarn","test"]
+    entrypoint: ["yarn", "test"]
 
   mongodb:
     image: mongo:latest
@@ -24,7 +25,6 @@ services:
     command: mongod --noauth
     ports:
       - 27017:27017
-
 
 networks:
   mongo:
