@@ -1,21 +1,6 @@
 version: "3.7"
 services:
-  front:
-    image: template-front:latest
-    build:
-      context: ./frontend
-      dockerfile: ./Dockerfile
-    ports:
-      - "3000:3000"
-    stdin_open: true
-    networks:
-      - frontBack
-    volumes:
-      - "./frontend:/app"
-      - "/app/node_modules"
-
-  back:
-    image: template-back:latest
+  back-test:
     build:
       context: ./backend
       dockerfile: ./Dockerfile
@@ -23,7 +8,6 @@ services:
       - "3001:3001"
     networks:
       - mongo
-      - frontBack
     environment:
       - MONGO_URI=mongodb://mongodb:27017/person_db
     depends_on:
@@ -31,6 +15,7 @@ services:
     volumes:
       - "./backend:/app"
       - "/app/node_modules"
+    entrypoint: ["yarn","test"]
 
   mongodb:
     image: mongo:latest
@@ -39,14 +24,8 @@ services:
     command: mongod --noauth
     ports:
       - 27017:27017
-    volumes:
-      - mongodb_data_container:/data/db
 
-volumes:
-  mongodb_data_container:
 
 networks:
   mongo:
     name: mongo
-  frontBack:
-    name: frontBack
