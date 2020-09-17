@@ -1,6 +1,7 @@
 version: "3.7"
 services:
   front:
+    image: template-front:latest
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
@@ -14,6 +15,7 @@ services:
       - "/app/node_modules"
 
   back:
+    image: template-back:latest
     build:
       context: ./backend
       dockerfile: ./Dockerfile
