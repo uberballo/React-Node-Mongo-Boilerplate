@@ -11,7 +11,7 @@ services:
     networks:
       - frontBack
     volumes:
-      - "./frontend:/app"
+      - "./frontend:/home/node/app"
       - "/app/node_modules"
 
   back:
@@ -29,7 +29,7 @@ services:
     depends_on:
       - mongodb
     volumes:
-      - "./backend:/app"
+      - "./backend:/home/node/app"
       - "/app/node_modules"
 
   mongodb:
