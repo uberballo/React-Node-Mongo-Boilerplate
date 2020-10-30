@@ -5,6 +5,7 @@ services:
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
+    command: "yarn start"
     ports:
       - "3000:3000"
     stdin_open: true
@@ -19,6 +20,7 @@ services:
     build:
       context: ./backend
       dockerfile: ./Dockerfile
+    command: "yarn dev"
     ports:
       - "3001:3001"
     networks:
