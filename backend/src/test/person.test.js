@@ -41,8 +41,7 @@ describe('person', function () {
       })
 
       const savedPerson = await newPerson.save()
-      //should.exist(await Person.findById(savedPerson.id))
-      expect(1).to.equal(2); 
+      should.exist(await Person.findById(savedPerson.id))
       console.log(savedPerson)
     })
   })
