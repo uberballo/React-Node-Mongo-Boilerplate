@@ -8,11 +8,6 @@ check_command () {
     fi
 }
 
-check_all_commands () {
-    check_command "docker"
-    check_command "docker-compose"
-}
 
 check_command "docker"
 check_command "docker-compose"
-echo "hello from check"

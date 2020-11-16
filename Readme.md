@@ -18,9 +18,10 @@ With these simple steps you can start developing your new project:
 * Start doing stuff  
 
 ## How to run tests  
-* docker-compose -f docker-compose.test.yaml up --exit-code-from back-test  
+Start tests with `./scripts/test.sh` or by running `./test.sh` in the `scripts` directory.  
+You may need to allow executing file as program. Run `chmod +x ./scripts/<scripts name>`  
 
-Here we point to the `docker-compose.test.yaml` file and close all services after the `back-test` has finished.
+The scripts first check if you have the required dependencies installed. Then it runs the tests with docker-compose. we point to the `docker-compose.test.yaml` file and close all services after the `back-test` service has finished.
 ## TODO   
 If you want to use this in any production, that requires some changes.
 * Add some E2E tests
