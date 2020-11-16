@@ -10,6 +10,6 @@ if [[ $working_dir =~ .\/scripts ]]
 then
     prefix="../"
 fi
+
 path_to_compose_file="$prefix$docker_compose_file"
-echo "$path_to_compose_file"
 docker-compose -f  "$prefix$docker_compose_file" up --exit-code-from back-test
