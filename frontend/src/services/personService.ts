@@ -4,14 +4,18 @@ import {Person} from '../types'
 const baseUrl = '/api/person'
 
 type ServiceResponse = {
-  data: Person
-  error?: String
+  data?: Person | void
+  error?: string
 }
 
-const tryCatchWrapper = async (func: any): Promise<any> => {
+type GenericFunc = () => void
+
+const tryCatchWrapper = async (func: GenericFunc): Promise<ServiceResponse> => {
   try {
     const res = await func()
-    return res
+    return {
+      data: res,
+    }
   } catch (e) {
     return {
       error: e,
@@ -34,7 +38,7 @@ const createPerson = async (name: string): Promise<ServiceResponse> => {
   return res
 }
 
-const removePerson = async (id: number) => {
+const removePerson = async (id: number): Promise<ServiceResponse> => {
   const res = await tryCatchWrapper(() => axios.delete(`${baseUrl}/${id}`))
   return res
 }

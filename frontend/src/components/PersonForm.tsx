@@ -1,15 +1,19 @@
-import React, {Dispatch} from 'react'
+import React, {ReactElement} from 'react'
 
 type HandleSubmit = {
   (event: React.FormEvent<HTMLFormElement>): void
 }
 
 type PersonFormProps = {
-  name: {type: any; value: string; onChange: (event: any) => void}
+  name: {
+    type: string
+    value: string
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  }
   handleSubmit: HandleSubmit
 }
 
-const PersonForm = ({name, handleSubmit}: PersonFormProps) => {
+const PersonForm = ({name, handleSubmit}: PersonFormProps): ReactElement => {
   return (
     <form onSubmit={handleSubmit}>
       <div>

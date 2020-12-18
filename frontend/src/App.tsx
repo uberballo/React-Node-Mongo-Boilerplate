@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {ReactElement} from 'react'
 import PersonContainer from './components/PersonContainer'
 
-const App = () => {
+const App = (): ReactElement => {
   return (
     <div className="App">
       <p>hello</p>

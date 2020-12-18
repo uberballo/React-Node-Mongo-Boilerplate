@@ -1,17 +1,20 @@
-import React from 'react'
+import React, {ReactElement} from 'react'
 import PersonForm from './PersonForm'
 import useField from '../helpers/useField'
 import personService from '../services/personService'
 import {Person} from '../types'
 
-type AddPerson = (persons: Person[]) => any
+type AddPerson = (persons: Person[] | any) => Person
 
 type NewPersonContainerProps = {
   persons: Person[]
   setPersons: AddPerson
 }
 
-const NewPersonContainer = ({persons, setPersons}: NewPersonContainerProps) => {
+const NewPersonContainer = ({
+  persons,
+  setPersons,
+}: NewPersonContainerProps): ReactElement => {
   const name = useField('text')
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
