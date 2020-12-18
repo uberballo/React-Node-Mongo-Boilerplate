@@ -1,5 +1,3 @@
-const assert = require('assert')
-const expect = require('chai').expect
 const should = require('chai').should()
 const mongoose = require('mongoose')
 const config = require('../utils/config')
