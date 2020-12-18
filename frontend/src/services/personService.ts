@@ -14,13 +14,13 @@ const tryCatchWrapper = async (func: any): Promise<any> => {
   }
 }
 
-const getPersons = async () => {
-  const res = await axios.get<Person[]>(baseUrl)
+const getPersons = async (): Promise<Person> => {
+  const res = await tryCatchWrapper(() => axios.get<Person[]>(baseUrl))
   console.log(res)
   return res
 }
 
-const createPerson = async (name: any) => {
+const createPerson = async (name: string): Promise<Person> => {
   const res = await tryCatchWrapper(() =>
     axios.post(baseUrl, {
       name: name,
@@ -29,7 +29,7 @@ const createPerson = async (name: any) => {
   return res
 }
 
-const removePerson = async (id: any) => {
+const removePerson = async (id: number) => {
   const res = await tryCatchWrapper(() => axios.delete(`${baseUrl}/${id}`))
   return res
 }
