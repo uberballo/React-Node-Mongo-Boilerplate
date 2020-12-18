@@ -14,8 +14,8 @@ type NewPersonContainerProps = {
 const NewPersonContainer = ({persons, setPersons}: NewPersonContainerProps) => {
   const name = useField('text')
 
-  const handleSubmit = async (e: React.ChangeEvent) => {
-    e.preventDefault()
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
     const res = await personService.createPerson(name.value)
     if (res.error) return
     setPersons([...persons, res.data])

@@ -3,6 +3,11 @@ import {Person} from '../types'
 
 const baseUrl = '/api/person'
 
+type ServiceResponse = {
+  data: Person
+  error?: String
+}
+
 const tryCatchWrapper = async (func: any): Promise<any> => {
   try {
     const res = await func()
@@ -14,13 +19,13 @@ const tryCatchWrapper = async (func: any): Promise<any> => {
   }
 }
 
-const getPersons = async (): Promise<Person> => {
+const getPersons = async (): Promise<ServiceResponse> => {
   const res = await tryCatchWrapper(() => axios.get<Person[]>(baseUrl))
   console.log(res)
   return res
 }
 
-const createPerson = async (name: string): Promise<Person> => {
+const createPerson = async (name: string): Promise<ServiceResponse> => {
   const res = await tryCatchWrapper(() =>
     axios.post(baseUrl, {
       name: name,

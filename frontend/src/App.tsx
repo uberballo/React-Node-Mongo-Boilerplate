@@ -4,7 +4,7 @@ import PersonContainer from './components/PersonContainer'
 const App = () => {
   return (
     <div className="App">
-      <p>hell0o</p>
+      <p>hello</p>
       <PersonContainer />
     </div>
   )
