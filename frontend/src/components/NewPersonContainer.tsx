@@ -2,11 +2,19 @@ import React from 'react'
 import PersonForm from './PersonForm'
 import useField from '../helpers/useField'
 import personService from '../services/personService'
+import {Person} from '../types'
 
-const NewPersonContainer = ({persons, setPersons}) => {
+type AddPerson = (persons: Person[]) => any
+
+type NewPersonContainerProps = {
+  persons: Person[]
+  setPersons: AddPerson
+}
+
+const NewPersonContainer = ({persons, setPersons}: NewPersonContainerProps) => {
   const name = useField('text')
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e: React.ChangeEvent) => {
     e.preventDefault()
     const res = await personService.createPerson(name.value)
     if (res.error) return

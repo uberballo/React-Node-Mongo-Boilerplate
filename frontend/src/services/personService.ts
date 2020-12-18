@@ -1,8 +1,9 @@
 import axios from 'axios'
+import {Person} from '../types'
 
 const baseUrl = '/api/person'
 
-const tryCatchWrapper = async func => {
+const tryCatchWrapper = async (func: any): Promise<any> => {
   try {
     const res = await func()
     return res
@@ -14,12 +15,12 @@ const tryCatchWrapper = async func => {
 }
 
 const getPersons = async () => {
-  const res = await tryCatchWrapper(() => axios.get(baseUrl))
+  const res = await axios.get<Person[]>(baseUrl)
   console.log(res)
   return res
 }
 
-const createPerson = async name => {
+const createPerson = async (name: any) => {
   const res = await tryCatchWrapper(() =>
     axios.post(baseUrl, {
       name: name,
@@ -28,9 +29,9 @@ const createPerson = async name => {
   return res
 }
 
-const removePerson = async id => {
+const removePerson = async (id: any) => {
   const res = await tryCatchWrapper(() => axios.delete(`${baseUrl}/${id}`))
   return res
 }
 
-export default { getPersons, createPerson, removePerson }
+export default {getPersons, createPerson, removePerson}

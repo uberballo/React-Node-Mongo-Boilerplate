@@ -1,7 +1,15 @@
 import React from 'react'
 import '../styles/person.css'
+import {Person} from '../types'
 
-const Person = ({person, removePerson}) => {
+type RemovePerson = (id: number) => any
+
+type PersonProps = {
+  person: Person
+  removePerson: RemovePerson
+}
+
+const SinglePerson = ({person, removePerson}: PersonProps) => {
   return (
     <div className="person">
       <p className="personName">{person.name}</p>
@@ -12,4 +20,4 @@ const Person = ({person, removePerson}) => {
   )
 }
 
-export default Person
+export default SinglePerson

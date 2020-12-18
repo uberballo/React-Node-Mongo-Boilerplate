@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import personService from '../services/personService'
-import Person from './Person'
+import SinglePerson from './SinglePerson'
 import NewPersonContainer from './NewPersonContainer'
 
 const PersonContainer = () => {
@@ -27,7 +27,11 @@ const PersonContainer = () => {
 
   const personRows = () => {
     return persons?.map(person => (
-      <Person person={person} key={person.id} removePerson={removePerson} />
+      <SinglePerson
+        person={person}
+        key={person.id}
+        removePerson={removePerson}
+      />
     ))
   }
 
