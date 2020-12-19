@@ -1,6 +1,12 @@
 import {useState} from 'react'
 
-const useField = (type: string) => {
+type UseFieldTypes = {
+  type: string
+  value: string
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+const useField = (type: string): UseFieldTypes => {
   const [value, setValue] = useState('')
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {

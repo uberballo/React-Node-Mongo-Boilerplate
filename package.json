@@ -14,7 +14,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna run --concurrency 1 --stream eslint --since HEAD --exclude-dependents" 
+      "pre-commit": "lerna run eslint --concurrency 1 --stream --exclude-dependents" 
     }
   },
   "repository": {

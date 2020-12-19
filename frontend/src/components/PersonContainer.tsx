@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, ReactElement} from 'react'
 import personService from '../services/personService'
 import SinglePerson from './SinglePerson'
 import NewPersonContainer from './NewPersonContainer'
 import {Person} from '../types'
 
-const PersonContainer = () => {
-  const [persons, setPersons] = useState<Person[] >([])
+const PersonContainer = (): ReactElement => {
+  const [persons, setPersons] = useState<Person[]>([])
 
   useEffect(() => {
     async function fetchData() {
