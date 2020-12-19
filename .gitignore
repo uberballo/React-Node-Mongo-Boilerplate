@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
+
+frontend/src/react-app-env.d.ts

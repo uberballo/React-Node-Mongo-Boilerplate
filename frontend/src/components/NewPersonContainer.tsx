@@ -1,6 +1,6 @@
 import React, {Dispatch, ReactElement, SetStateAction} from 'react'
 import PersonForm from './PersonForm'
-import useField from '../helpers/useField'
+import useField from '../utils/useField'
 import personService from '../services/personService'
 import {Person} from '../types'
 
@@ -18,7 +18,7 @@ const NewPersonContainer = ({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const res = await personService.createPerson(name.value)
-    if (res.status !== 200) return
+    if (res.status !== 201) return
     setPersons([...persons, res.data])
   }
 

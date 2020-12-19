@@ -1,21 +1,8 @@
 import axios, { AxiosResponse } from 'axios'
-import {Person} from '../types'
+import {Person, RequestInput} from '../types'
+import { tryCatchWrapper } from '../utils/axiosWrapper'
 
 const baseUrl = '/api/person'
-
-type RequestInput = number | string | void
-
-type GenericFunc = (input: RequestInput) => Promise<AxiosResponse>
-
-
-const tryCatchWrapper = async (func: GenericFunc): Promise<AxiosResponse> => {
-  try {
-      const res = await func()
-      return res
-  } catch (e) {
-    return  e
-  }
-}
 
 const getPersons = async (): Promise<AxiosResponse> => {
   const res = await tryCatchWrapper(() => axios.get<Person[]>(baseUrl))

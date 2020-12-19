@@ -10,8 +10,8 @@ const PersonContainer = () => {
   useEffect(() => {
     async function fetchData() {
       const result = await personService.getPersons()
-      const fetchedPeople = result.data
       if (result.status === 200) {
+        const fetchedPeople = result.data
         setPersons(fetchedPeople)
       }
     }

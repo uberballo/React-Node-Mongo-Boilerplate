@@ -5,7 +5,7 @@ type HandleSubmit = {
 }
 
 type PersonFormProps = {
-  name: {
+  nameField: {
     type: string
     value: string
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -13,12 +13,12 @@ type PersonFormProps = {
   handleSubmit: HandleSubmit
 }
 
-const PersonForm = ({name, handleSubmit}: PersonFormProps): ReactElement => {
+const PersonForm = ({nameField, handleSubmit}: PersonFormProps): ReactElement => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label>Name:</label>
-        <input placeholder={'Enter name here!'} {...name} />
+        <input placeholder={'Enter name here!'} {...nameField} />
       </div>
       <button type="submit">Submit</button>
     </form>
