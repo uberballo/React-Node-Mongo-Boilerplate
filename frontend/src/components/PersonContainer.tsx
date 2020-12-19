@@ -2,22 +2,24 @@ import React, {useState, useEffect} from 'react'
 import personService from '../services/personService'
 import SinglePerson from './SinglePerson'
 import NewPersonContainer from './NewPersonContainer'
+import {Person} from '../types'
 
 const PersonContainer = () => {
-  const [persons, setPersons] = useState([])
+  const [persons, setPersons] = useState<Person[] >([])
 
   useEffect(() => {
     async function fetchData() {
       const result = await personService.getPersons()
-      if (!result.error) {
-        setPersons(result.data)
+      const fetchedPeople = result.data
+      if (result.status === 200) {
+        setPersons(fetchedPeople)
       }
     }
 
     fetchData()
   }, [])
 
-  const removePerson = async id => {
+  const removePerson = async (id: number) => {
     const removed = await personService.removePerson(id)
     if (removed.status === 204) {
       const result = persons.filter(person => !(person.id === id))

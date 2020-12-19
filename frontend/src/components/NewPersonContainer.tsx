@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react'
+import React, {Dispatch, ReactElement, SetStateAction} from 'react'
 import PersonForm from './PersonForm'
 import useField from '../helpers/useField'
 import personService from '../services/personService'
@@ -8,7 +8,7 @@ type AddPerson = (persons: Person[] | any) => Person
 
 type NewPersonContainerProps = {
   persons: Person[]
-  setPersons: AddPerson
+  setPersons: Dispatch<SetStateAction<Person[]>>
 }
 
 const NewPersonContainer = ({
@@ -20,7 +20,7 @@ const NewPersonContainer = ({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const res = await personService.createPerson(name.value)
-    if (res.error) return
+    if (res.status !== 200) return
     setPersons([...persons, res.data])
   }
 

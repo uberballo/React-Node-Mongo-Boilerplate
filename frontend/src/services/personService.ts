@@ -1,35 +1,29 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import {Person} from '../types'
 
 const baseUrl = '/api/person'
 
-type ServiceResponse = {
-  data?: Person | void
-  error?: string
-}
+type RequestInput = number | string | void
 
-type GenericFunc = () => void
+type GenericFunc = (input: RequestInput) => Promise<AxiosResponse>
 
-const tryCatchWrapper = async (func: GenericFunc): Promise<ServiceResponse> => {
+
+const tryCatchWrapper = async (func: GenericFunc): Promise<AxiosResponse> => {
   try {
-    const res = await func()
-    return {
-      data: res,
-    }
+      const res = await func()
+      return res
   } catch (e) {
-    return {
-      error: e,
-    }
+    return  e
   }
 }
 
-const getPersons = async (): Promise<ServiceResponse> => {
+const getPersons = async (): Promise<AxiosResponse> => {
   const res = await tryCatchWrapper(() => axios.get<Person[]>(baseUrl))
   console.log(res)
   return res
 }
 
-const createPerson = async (name: string): Promise<ServiceResponse> => {
+const createPerson = async (name: RequestInput): Promise<AxiosResponse> => {
   const res = await tryCatchWrapper(() =>
     axios.post(baseUrl, {
       name: name,
@@ -38,7 +32,7 @@ const createPerson = async (name: string): Promise<ServiceResponse> => {
   return res
 }
 
-const removePerson = async (id: number): Promise<ServiceResponse> => {
+const removePerson = async (id: RequestInput): Promise<AxiosResponse> => {
   const res = await tryCatchWrapper(() => axios.delete(`${baseUrl}/${id}`))
   return res
 }

@@ -2,7 +2,7 @@ import React, {ReactElement} from 'react'
 import '../styles/person.css'
 import {Person} from '../types'
 
-type RemovePerson = (id: number) => Promise<Person>
+type RemovePerson = (id: number) => void
 
 type PersonProps = {
   person: Person
