@@ -13,16 +13,16 @@ const NewPersonContainer = ({
   persons,
   setPersons,
 }: NewPersonContainerProps): ReactElement => {
-  const name = useField('text')
+  const nameField = useField('text')
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const res = await personService.createPerson(name.value)
+    const res = await personService.createPerson(nameField.value)
     if (res.status !== 201) return
     setPersons([...persons, res.data])
   }
 
-  return <PersonForm handleSubmit={handleSubmit} name={name} />
+  return <PersonForm handleSubmit={handleSubmit} nameField={nameField} />
 }
 
 export default NewPersonContainer

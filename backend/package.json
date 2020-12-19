@@ -10,11 +10,6 @@
     "test": "mocha src/test/*.js",
     "eslint": "eslint . --ext .js"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn run eslint"
-    }
-  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

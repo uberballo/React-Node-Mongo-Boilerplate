@@ -1,0 +1,30 @@
+{
+  "name": "React-Node-Mongo-Boilerplate",
+  "version": "1.0.0",
+  "description": "This is a simple boilerplate for a React frontend and Node backend project. Contains some example functionality.  Backend with CRD, Docker-compose that supports development, working DB and fluent UI/UX.    If you're new to React + Nodejs, feel free to copy what I did. Can't guarantee that everything is done in the best way, but it should at least give you some image.",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "husky": "^4.3.6"
+  },
+  "scripts": {
+    "eslint:back": "eslint ./backend --ext .js",
+    "eslint:front": "eslint ./frontend --ext .ts,.tsx"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run eslint:back && yarn run eslint:front"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uberballo/React-Node-Mongo-Boilerplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uberballo/React-Node-Mongo-Boilerplate/issues"
+  },
+  "homepage": "https://github.com/uberballo/React-Node-Mongo-Boilerplate#readme"
+}

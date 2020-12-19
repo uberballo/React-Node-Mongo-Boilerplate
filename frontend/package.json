@@ -24,11 +24,6 @@
     "eslint": "eslint . --ext .ts,.tsx",
     "dev": "ts-node-dev --respawn src/index.tsx"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn run eslint"
-    }
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
