@@ -4,8 +4,6 @@ import useField from '../helpers/useField'
 import personService from '../services/personService'
 import {Person} from '../types'
 
-type AddPerson = (persons: Person[] | any) => Person
-
 type NewPersonContainerProps = {
   persons: Person[]
   setPersons: Dispatch<SetStateAction<Person[]>>
