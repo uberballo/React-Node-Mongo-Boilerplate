@@ -5,7 +5,8 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^7.16.0",
-    "husky": "^4.3.6"
+    "husky": "^4.3.6",
+    "lerna": "^3.22.1"
   },
   "scripts": {
     "eslint:back": "eslint ./backend --ext .js",
@@ -13,7 +14,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run eslint:back"
+      "pre-commit": "lerna run --concurrency 1 --stream eslint --since HEAD --exclude-dependents" 
     }
   },
   "repository": {
