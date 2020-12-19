@@ -2,7 +2,7 @@
 
 This is a simple boilerplate for a Typescript + React frontend and Node backend project. Contains some example functionality.
 Backend with CRD, Docker-compose that supports development, working DB and fluent UI/UX.  
- If you're new to React + Nodejs, feel free to copy what I did. Can't guarantee that everything is done in the best way, but it should at least give you some image.
+ If you're new to React + Nodejs, feel free to copy what I did.
 
 ## What do we have here?
 
