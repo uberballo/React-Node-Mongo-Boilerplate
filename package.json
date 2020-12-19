@@ -13,7 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run eslint:back && yarn run eslint:front"
+      "pre-commit": "yarn run eslint:back"
     }
   },
   "repository": {
