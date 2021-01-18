@@ -5,9 +5,10 @@ const bodyParser = require('body-parser')
 const errorHandler = require('./src/middleware/errorHandler')
 const morgan = require('morgan')
 const morganLogging = require('./src/middleware/morganLogging')
-
 const mongoose = require('mongoose')
 const config = require('./src/utils/config')
+
+
 const uri = config.MONGO_URI
 
 console.log('connecting to', uri)
@@ -19,7 +20,7 @@ mongoose
   .then(() => {
     console.log('connected to MongoDB.')
   })
-  .catch(error => {
+  .catch((error: { message: any }) => {
     console.log('error connecting to MongoDB:', error.message)
   })
 
@@ -32,4 +33,4 @@ app.use(errorHandler)
 
 app.use('/api', routes)
 
-module.exports = app
+export = app
