@@ -1,12 +1,12 @@
 const should = require('chai').should()
 const mongoose = require('mongoose')
-const config = require('../utils/config')
 const Person = require('../models/person')
+import config from '../utils/config'
 
 describe('person', function () {
   const MONGO_DB_URI = config.MONGO_URI
 
-  const clearDB = done => {
+  const clearDB = (done: () => void) => {
     for (var collection in mongoose.connection.collections) {
       mongoose.connection.collections[collection].remove(function () {})
     }

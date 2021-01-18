@@ -8,7 +8,6 @@ const morganLogging = require('./src/middleware/morganLogging')
 const mongoose = require('mongoose')
 const config = require('./src/utils/config')
 
-
 const uri = config.MONGO_URI
 
 console.log('connecting to', uri)
@@ -20,7 +19,7 @@ mongoose
   .then(() => {
     console.log('connected to MongoDB.')
   })
-  .catch((error: { message: any }) => {
+  .catch((error: {message: any}) => {
     console.log('error connecting to MongoDB:', error.message)
   })
 

@@ -1,6 +1,10 @@
-import { Request, Response } from 'express'
-import { TokenIndexer }from 'morgan'
-const morganLogging = (tokens:TokenIndexer<Request, Response>, req: Request, res:Response) => {
+import {Request, Response} from 'express'
+import {TokenIndexer} from 'morgan'
+const morganLogging = (
+  tokens: TokenIndexer<Request, Response>,
+  req: Request,
+  res: Response
+) => {
   return [
     tokens.method(req, res),
     tokens.url(req, res),

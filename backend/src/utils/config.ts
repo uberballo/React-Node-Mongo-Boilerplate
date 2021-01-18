@@ -8,7 +8,4 @@ if (process.env.NODE_ENV !== 'production') {
 const PORT = process.env.PORT || 3001
 const MONGO_URI = process.env.MONGO_URI
 
-module.exports = {
-  PORT,
-  MONGO_URI,
-}
+export = {PORT, MONGO_URI}
