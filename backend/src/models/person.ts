@@ -1,10 +1,10 @@
-const mongoose = require('mongoose')
+import mongoose, { Document } from 'mongoose'
 const personSchema = new mongoose.Schema({
     name: String
 })
 
 personSchema.set('toJSON', {
-    transform: (document, returnedObject) => {
+    transform: (_document: Document, returnedObject: Document) => {
         returnedObject.id = returnedObject._id.toString()
         delete returnedObject._id
         delete returnedObject.__v
